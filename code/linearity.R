@@ -21,9 +21,6 @@ length(las@data$X[las@data$Shape==TRUE])
 
 plot(las, color = "Shape", legend=TRUE)
 
-las <- segment_shapes(las, shp_plane(k = 10), "Coplanar")
-plot(las, color = "Coplanar")
-
 Rcpp::sourceCpp(code = "
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -35,15 +32,15 @@ arma::princomp(coeff, score, latent, A);
 return(latent);
 }")
 
-is.planar <- function(x, y, z, th1 = 12, th2 = 3) {
+is.linear <- function(x, y, z) {
   xyz <- cbind(x,y,z)
   eigen_m <- eigen_values(xyz)
-  is_planar <- eigen_m[2] > (th1*eigen_m[3]) && (th2*eigen_m[2]) > eigen_m[1]
-  return(list(planar = is_planar))
+  is_linear <- eigen_m[1] - eigen_m[2] / eigen_m[1]
+  return(list(linear = is_linear))
 }
 
-M <- point_metrics(las, ~is.planar(X,Y,Z), k = 20)
+M <- point_metrics(las, ~is.linear(X,Y,Z), k = 50)
 
-las <- add_attribute(las, FALSE, "planar")
-las$planar[M$pointID] <- M$planar
-plot(las, color = "planar")
+las <- add_attribute(las, FALSE, "linear")
+las$linear<- M$linear
+plot(las, color = "linear", legend=T)
