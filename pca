@@ -1,0 +1,8 @@
+##PCA
+Genellikle, korelasyonlar veya kovaryanslar için bir veri kümesindeki tüm değişkenlere bakmak yararlı veya bilgilendirici değildir. 
+Tercih edilen bir yaklaşım, varyansları tarafından verilen bilgilerin çoğunu koruyan orijinal değişkenlerden yeni değişkenler türetmektir. 
+Temel bileşen analizi, temel bileşenler olarak bilinen değişkenlerin doğrusal kombinasyonlarını kullanarak verileri daha az boyutlu projelendirerek birçok boyutlu 
+(değişken) verileri azaltmak için yaygın olarak kullanılan ve popüler bir istatistiksel yöntemdir. Yeni öngörülen değişkenler (temel bileşenler) birbirleriyle ilintisizdir 
+ve ilk birkaç bileşenin orijinal değişkenlerde bulunan varyasyonun çoğunu tutması için sıralanır. Bu nedenle, PCA, bağımsız değişkenlerin birbiriyle ilişkilendirildiği 
+durumlarda da yararlıdır ve keşifsel veri analizinde veya tahmine dayalı modeller yapmak için kullanılabilir. Temel bileşen analizi, çok normal dağılımdan aykırı değerler 
+ve sapmalar gibi verilerin önemli özelliklerini de ortaya çıkarabilir.
